@@ -8,6 +8,13 @@
 </template>
 
 <script setup>
+import { onMounted } from "vue";
 import PokemonDetails from "src/components/PokemonDetails.vue";
 import PokemonTable from "src/components/PokemonTable.vue";
+import fetchPokemons from "src/utils/pokeDate.js";
+
+onMounted(async () => {
+  const pokemons = await fetchPokemons();
+  console.log(pokemons);
+});
 </script>
