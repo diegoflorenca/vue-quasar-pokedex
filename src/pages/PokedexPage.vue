@@ -1,9 +1,7 @@
 <template>
-  <q-page class="flex flex-center">
-    <div class="row q-gutter-md">
-      <div class="col"><PokemonDetails /></div>
-      <div class="col"><PokemonTable /></div>
-    </div>
+  <q-page class="row q-gutter-md">
+    <div class="col"><PokemonDetails /></div>
+    <div class="col"><PokemonTable /></div>
   </q-page>
 </template>
 
