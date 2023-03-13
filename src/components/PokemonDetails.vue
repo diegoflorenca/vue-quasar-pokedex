@@ -10,16 +10,21 @@
 </template>
 
 <script setup>
-import { watch, reactive } from "vue";
+import { reactive, watch } from "vue";
 import { storeToRefs } from "pinia";
 import { usePokedexStore } from "src/stores/pokedex";
+import fetchPokemonDetails from "src/utils/pokemonApiDetails";
+
 const pokemonStore = usePokedexStore();
 const { selected } = storeToRefs(pokemonStore);
 
-const pokemon = reactive({});
+const pokemon = reactive({
+  details: [],
+});
 
-watch(selected, (currentSeletedPokemon) => {
+watch(selected, async (currentSeletedPokemon) => {
   pokemon.id = currentSeletedPokemon.id;
   pokemon.name = currentSeletedPokemon.name;
+  pokemon.details = await fetchPokemonDetails(currentSeletedPokemon.id);
 });
 </script>
