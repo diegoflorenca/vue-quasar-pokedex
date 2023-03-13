@@ -8,7 +8,7 @@
 <script setup>
 import { reactive, onMounted } from "vue";
 import { usePokedexStore } from "src/stores/pokedex";
-import fetchPokemons from "src/utils/pokeDate.js";
+import fetchPokemons from "src/utils/pokeData.js";
 import PokemonDetails from "src/components/PokemonDetails.vue";
 import PokemonTable from "src/components/PokemonTable.vue";
 
