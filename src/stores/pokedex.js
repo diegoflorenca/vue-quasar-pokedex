@@ -1,9 +1,12 @@
 import { defineStore } from "pinia";
+import fetchPokeApi from "src/utils/pokedexApiData.js";
+import fetchPokemonDetails from "src/utils/pokemonApiDetails";
 
 export const usePokedexStore = defineStore("pokemon", {
   state: () => ({
     list: [],
     selected: {},
+    details: [],
   }),
   getters: {
     getPokemonList: (state) => state.list,
@@ -13,8 +16,13 @@ export const usePokedexStore = defineStore("pokemon", {
     getSelectedPokemon: (state) => state.selected,
   },
   actions: {
-    setPokemonList(list) {
-      this.list = list;
+    async fetchPokemonList() {
+      const apiData = await fetchPokeApi();
+      this.list = apiData;
+    },
+    async fetchPokemonDetails(pokemonId) {
+      const apiData = await fetchPokemonDetails(pokemonId);
+      this.details = apiData;
     },
     setSelectedPokemon(pokemon) {
       this.selected = pokemon;

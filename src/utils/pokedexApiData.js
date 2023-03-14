@@ -1,6 +1,6 @@
 import { api } from "src/boot/axios";
 
-const fetchPokemons = async () => {
+const fetchPokeApi = async () => {
   try {
     const pokeApiData = await api.get("/pokedex/2/");
     const pokeData = pokeApiData.data.pokemon_entries.map((pokemon) => {
@@ -18,4 +18,4 @@ const fetchPokemons = async () => {
   }
 };
 
-export default fetchPokemons;
+export default fetchPokeApi;
