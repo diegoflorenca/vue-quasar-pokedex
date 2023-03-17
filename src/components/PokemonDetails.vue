@@ -1,12 +1,13 @@
 <template>
   <q-page class="row">
-    <div class="q-px-lg">
-      <h3>Details</h3>
+    <div class="q-pa-xl">
+      <div class="text-h4">{{ p.details.name }}</div>
       <p>{{ p.details.baseHappiness }}</p>
       <p>{{ p.details.captureRate }}</p>
       <p>{{ p.details.color }}</p>
       <p>{{ p.details.eggGroups }}</p>
-      <p>{{ p.details.text }}</p>
+      <h6>Texts</h6>
+      <p v-for="(text, index) in p.details.text" :key="index">{{ text }}</p>
       <p>{{ p.details.genera }}</p>
       <p>{{ p.details.generation }}</p>
       <p>{{ p.details.growthRate }}</p>
@@ -16,7 +17,7 @@
       <p>{{ p.details.isBaby }}</p>
       <p>{{ p.details.isLegendary }}</p>
       <p>{{ p.details.isMythical }}</p>
-      <p>{{ p.details.name }}</p>
+      <p></p>
       <p>{{ p.details.order }}</p>
       <p>{{ p.details.areas }}</p>
     </div>
