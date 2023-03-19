@@ -16,23 +16,21 @@ const fetchPokemonDetails = async (id) => {
       return text.language.name == "en";
     });
 
-    const formattedTexts = texts.map((text) => {
-      /*
-      Page breaks are treated just like newlines.
-      Soft hyphens followed by newlines vanish.
-      Letter-hyphen-newline becomes letter-hyphen, to preserve real hyphenation. Any other newline becomes a space.
-      source: https://github.com/andreferreiradlw/pokestats/issues/41
-      */
-      return text.flavor_text
-        .replace("\f", "\n")
-        .replace("\u00ad\n", "")
-        .replace("\u00ad", "")
-        .replace(" -\n", " - ")
-        .replace("-\n", "-")
-        .replace("\n", " ");
-    });
+    const text = texts[Math.floor(Math.random() * texts.length)];
 
-    const uniq = [...new Set(formattedTexts)];
+    /*
+    Page breaks are treated just like newlines.
+    Soft hyphens followed by newlines vanish.
+    Letter-hyphen-newline becomes letter-hyphen, to preserve real hyphenation. Any other newline becomes a space.
+    source: https://github.com/andreferreiradlw/pokestats/issues/41
+    */
+    const formattedText = text.flavor_text
+      .replace("\f", "\n")
+      .replace("\u00ad\n", "")
+      .replace("\u00ad", "")
+      .replace(" -\n", " - ")
+      .replace("-\n", "-")
+      .replace("\n", " ");
 
     const name = pokemon.name[0].toUpperCase() + pokemon.name.substring(1);
 
@@ -49,7 +47,7 @@ const fetchPokemonDetails = async (id) => {
       captureRate: pokemon.capture_rate,
       color: pokemon.color.name,
       eggGroups: eggGroups,
-      text: uniq,
+      text: formattedText,
       genera: genera.genus,
       generation: pokemon.generation.name,
       growthRate: pokemon.growth_rate.name,
